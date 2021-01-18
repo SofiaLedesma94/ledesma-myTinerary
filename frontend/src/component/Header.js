@@ -7,7 +7,7 @@ const Header =()=>{
         <Link to="/">
         <button>Home</button>
         </Link>
-        <Link to="/citys">
+        <Link to="/cities">
         <button>Citys</button>
         </Link>
         

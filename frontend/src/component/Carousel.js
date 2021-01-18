@@ -11,12 +11,12 @@ import {
 
 const items = [
                 [{url:'./assets/Tokyo.jpg',nombre:'Tokyo'},
-                 {url:'./assets/singapur.jpg', nombre:'Singapur'},
+                 {url:'./assets/singapur.jpg', nombre:'Singapore'},
                   {url:'./assets/roma.jpg', nombre:'Rome'},
                   {url:'./assets/nuevaYork.jpg', nombre:'NY'}
                  ],
                 [{url:'./assets/Madrid.jpg',nombre:'Madrid'},
-                 {url:'./assets/toronto.jpg', nombre:'toronto'},
+                 {url:'./assets/toronto.jpg', nombre:'Toronto'},
                  {url:'./assets/vancouver.jpg',nombre:'Vancouver'},
                  {url:'./assets/sf.jpg',nombre:'San Francisco'}
         
@@ -24,7 +24,7 @@ const items = [
                 [
                   {url:'./assets/rio.jpg',nombre:'Rio de Janeiro'}, 
                   {url:'./assets/Playa-Bonita.png', nombre:'Playa Bonita'},
-                 {url:'./assets/santaMarta.jpg', nombre:'santa Marta'},
+                 {url:'./assets/santaMarta.jpg', nombre:'Santa Marta'},
                  {url:'./assets/machu2.jpg', nombre:'Machu Picchu'}
                 ]
                 

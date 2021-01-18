@@ -1,10 +1,10 @@
-const Citys =()=>{
+const Cities =()=>{
     return (
-        <div className='city' style={{height:'38vh'}}>
+        <div className='city' style={{height:'75vh'}}>
             <p style={{color:'white', fontSize:'6vh', textAlign:'center'}}>page in progress</p>
         </div>
         
     )
 }
 
-export default Citys
+export default Cities
