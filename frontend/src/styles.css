@@ -140,4 +140,49 @@ footer h5{
 .nav button:hover{
     background-color: rgb(128, 128, 128, 0.3);
 }
+.cityImg{
+    height: 45vh;
+    width: 60vw;
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+}
+.cities{
+    margin-top: 3vh;
+}
+.cityImg p{
+
+  color: white;
+  font-size: 6vh;
+  font-weight: bolder;
+ text-align: center;
+ padding-top: 5vh;
+ font-family: fantasy;
+ text-shadow: 2px 2px 2px violet;
+}
+
+.title h1{
+    color: orangered;
+   font-weight: bolder;
+   font-family: fantasy;
+   font-size: 8vh;
+   padding-top: 3vh;
+   text-align: center;
+}
+.title{
+    background-color: white;
+}
+
+.city input{
+    width: 80vw;
+    border: none;
+    padding: 3vh;
+    text-align: center;
+    background-color: rgb(238, 130, 238, 0.5);
+    color: black;
+    font-weight: bolder;
+    font-size: 3vh;
+    border-radius: 20px;
+    margin-left: 10vw;
+}
 
