@@ -2,9 +2,9 @@ import{Link} from 'react-router-dom'
 const Flecha =()=>{
     return (
         <div className="flecha">
-            
             <Link to="/cities">
-            <img src="./assets/click.jpg" alt="imagen de flecha"></img>
+            <div className="click">
+            </div>
             </Link>   
         </div>
     )

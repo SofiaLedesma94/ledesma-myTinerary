@@ -8,7 +8,7 @@ const Header =()=>{
         <button>Home</button>
         </Link>
         <Link to="/cities">
-        <button>Citys</button>
+        <button>Cities</button>
         </Link>
         
       </div>

@@ -10,8 +10,9 @@ const Itineraries=(props)=>{
    
     return (
       <>
-      <div key="keyPorId">
-      <h1>{itinerarie.ciudad}</h1>
+      <div className="Itineraries" key="keyPorId">
+        <h3>Available MyTineraries:</h3>
+        <h2>No Itineraries yet!</h2>
       </div>
       </>
     )

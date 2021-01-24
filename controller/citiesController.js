@@ -18,20 +18,28 @@ const citiesController={
          })
     },
     
-    allCities: async (req,res)=>{
+    allCities: (req,res)=>{
         //devolvemos las ciudades al frontend
-        const data= await City.find()
-       res.json({
-           respuesta: data
+       City.find()
+       .then(data=>{
+           return res.json({success: true, respuesta:data})
+       })
+       .catch(error=>{
+           return res.json({success:false, respuesta:error})
        })
      },
-     oneCitie:async (req,res)=>{
+     oneCitie: (req,res)=>{
          //devuelve una ciudad por id 
         const id= req.params.id
-        const info= await City.findById(id)
-        res.json({
-            success: true, respuesta: info }) 
-      }
+         City.findById(id)
+         .then(info=>{
+             return res.json({success:true, respuesta:info})
+         })
+         .catch(error=>{
+             return res.json({success:true, respuesta:error})
+         })
+        }
+       
 }
 
 module.exports = citiesController
