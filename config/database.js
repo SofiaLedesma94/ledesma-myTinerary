@@ -6,5 +6,5 @@ mongoose.connect('mongodb+srv://sofiledesma:paramore@cluster0.xwhfl.mongodb.net/
     useUnifiedTopology: true,
     useFindAndModify: false,
 })
-.then(respuesta => console.log(respuesta))
+.then(respuesta => console.log('Database connected'))
 .catch(error => console.log(error))
