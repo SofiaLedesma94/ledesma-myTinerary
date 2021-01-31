@@ -1,5 +1,6 @@
 const initialState ={
-    cities:[]
+    cities:[],
+    buscador:[]
 }
 
 const cityReducer =(state=initialState, action)=>{
@@ -10,9 +11,16 @@ const cityReducer =(state=initialState, action)=>{
             cities:  action.payload
         }
         break
+        case "FILTER":
+            return{
+                ...state,
+                buscador: state.cities.filter(city =>city.ciudad.toLowerCase().indexOf(action.payload,0) === 0)
+
+            }
       default:
       return state
     }
 }
 
 export default cityReducer
+

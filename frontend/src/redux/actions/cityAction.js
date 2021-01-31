@@ -7,7 +7,14 @@ listarCiudades: ()=>{
         const data = await axios.get('http://localhost:4000/api/cities')
         dispatch({type: "ALL_CITIES", payload: data.data.respuesta})
     }
+},
+filtroCiudad:(busqueda)=>{
+    return async  (dispatch)=>{
+        
+        dispatch({type:"FILTER", payload:busqueda})
+    }
 }
+
 }
 
 export default cityAction

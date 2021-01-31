@@ -1,4 +1,6 @@
+const Itinerary = require('../models/Itinerary')
 const Itineraries = require('../models/Itinerary')
+const { addCity } = require('./citiesController')
 const ItinerariesController ={
     addItinerary: async (req, res) =>{
         //addItinerary recibe por el body las propiedades y las destructuramos 
@@ -8,7 +10,7 @@ const ItinerariesController ={
      })
      agregarItinerary.save()
      .then(async itineraryGrabado=>{
-         const itinerary= await (await Itineraries.findById(itineraryGrabado._id)).populate('cityId')
+         const itinerary= await itineraryGrabado.populate('cityId').execPopulate()
          return res.json({succes:true, respuesta: itinerary})
      })
      .catch(error =>{
@@ -25,7 +27,18 @@ const ItinerariesController ={
             return res.json({success:false, respuesta:error})
         })
         
+    },
+    itinerariesForId: async (req, res)=>{
+       const {id}=req.params
+       const itinerarioCiudad= await Itinerary.find({cityId:id})
+       .then(itinerarioCiudad =>{
+           return res.json({success:true, respuesta: itinerarioCiudad})
+       })
+       .catch(error =>{
+           return res.json({success:false, respuesta:error})
+       })
     }
+    
 
 }
 

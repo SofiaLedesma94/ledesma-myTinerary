@@ -206,3 +206,46 @@ footer h5{
  text-shadow: 2px 2px 2px violet;
  background-color:  rgb(238, 130, 238,0.5);
 }
+.contenedorItinerario{
+    background-color: white;
+    width: 50vw;
+    margin: auto;
+    border-bottom: 20px solid  rgb(0, 0, 255,0.5) ;
+    font-family: fantasy;
+}
+.itinerario{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 40vw;
+    margin: auto;
+}
+.itinerarieUsuario img{
+    width: 13vw;
+}
+.itinerarieUsuario h6{
+    color: blueviolet;
+    padding-left: 3vw;
+}
+.itinerarioInfo h6{
+    color: blueviolet;
+    font-size: 3.5vh;
+    margin: 3vh 0px;
+}
+.itinerarioFlex{
+    display: flex;
+    justify-content: space-between;
+}
+.contenedorItinerario button{
+    text-align: center;
+    border:none;
+    width: 50vw;
+    padding: 1vh;
+    color: blueviolet;
+    font-weight: bolder;
+} 
+.itinerarioInfo h1{
+    font-size: 4vh;
+    color:blueviolet;
+    text-shadow: 1px 1px 1px black;
+}
