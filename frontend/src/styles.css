@@ -250,8 +250,9 @@ footer h5{
 .itinerarioInfo h1{
     font-size: 4vh;
     color:blueviolet;
-    text-shadow: 1px 1px 1px black;
     min-width: 400px;
+    font-family: fantasy;
+    padding:5px;
 }
 .itinerarioInfo .hashtag{
     color: blueviolet ;
