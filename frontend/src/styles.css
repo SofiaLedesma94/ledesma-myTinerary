@@ -192,6 +192,8 @@ footer h5{
     color: white;
     font-weight: bolder;
     text-shadow: 2px 2px 2px orangered;
+    padding-left: 2vw;
+    margin: 3vh 0px;
 }
 .itinerariesId{
     height: 70vh;
@@ -222,14 +224,15 @@ footer h5{
 }
 .itinerarieUsuario img{
     width: 13vw;
+
 }
 .itinerarieUsuario h6{
     color: blueviolet;
     padding-left: 3vw;
 }
 .itinerarioInfo h6{
-    color: blueviolet;
-    font-size: 3.5vh;
+    color: orangered;
+    font-size: 3vh;
     margin: 3vh 0px;
 }
 .itinerarioFlex{
@@ -248,4 +251,9 @@ footer h5{
     font-size: 4vh;
     color:blueviolet;
     text-shadow: 1px 1px 1px black;
+    min-width: 400px;
+}
+.itinerarioInfo .hashtag{
+    color: blueviolet ;
+    font-size: 2.5vh;
 }
