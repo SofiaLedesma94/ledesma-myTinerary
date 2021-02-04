@@ -8,6 +8,7 @@ const itinerarySchema = new mongoose.Schema({
     price:{type:Number, required:true},
     hashtag:{type:Array},
     comments: [{userName:String, comment:String, userPic:String}],
+    activities: [{activityImage:String, activityTitle:String,}],
     //exportamos el id de City 
     cityId: {type:mongoose.Schema.ObjectId, ref:'city'}
      

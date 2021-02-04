@@ -1,10 +1,12 @@
+
 import { connect } from 'react-redux'
 import itineraryAction from '../redux/actions/itineraryAction'
+import BotonVerMas from './BotonVerMas'
 
 
 
 const ItinerariesPorCiudad =(props)=>{
-  console.log(props.itineraries)
+
   
     return (
         <div className='itinerary' key="keyCity">
@@ -26,11 +28,10 @@ const ItinerariesPorCiudad =(props)=>{
                   <h6 className="hashtag">{item.hashtag}</h6>
                 </div>
               </div>
-              <button>view more</button>
+               <BotonVerMas actividades={item.activities}/>
               </div>
-              </>
+              </> 
             })}
-           
         </div>
     )
 }

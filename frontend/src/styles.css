@@ -219,12 +219,14 @@ footer h5{
     background-color: white;
     display: flex;
     justify-content: space-between;
-    width: 40vw;
+    width: 50vw;
     margin: auto;
 }
 .itinerarieUsuario img{
-    width: 13vw;
-
+    width: 10vw;
+    border-radius: 5vw;
+    border: 1px solid rgba(134, 66, 66, 0.3);
+    margin: 2vh 2vw;
 }
 .itinerarieUsuario h6{
     color: blueviolet;
@@ -238,6 +240,7 @@ footer h5{
 .itinerarioFlex{
     display: flex;
     justify-content: space-between;
+    margin-right: 1vw;
 }
 .contenedorItinerario button{
     text-align: center;
@@ -257,4 +260,25 @@ footer h5{
 .itinerarioInfo .hashtag{
     color: blueviolet ;
     font-size: 2.5vh;
+}
+.containerActivities{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+   
+}
+
+.containerImg img{
+    width: 15vw;
+    min-height: 200px;
+}
+.containerImg{
+    margin: 1vh 0.5vw;
+}
+
+.containerImg p{
+    color: black;
+    font-size: 3vh;
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   padding: 0;
 }

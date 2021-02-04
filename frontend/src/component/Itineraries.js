@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import itineraryAction from '../redux/actions/itineraryAction'
 import ItinerariesPorCiudad from './ItinerariesPorCiudad'
+import cityAction from '../redux/actions/cityAction'
+
 
 const Itineraries=(props)=>{
     const [city, setCity]=useState({})
@@ -33,13 +35,12 @@ const Itineraries=(props)=>{
 const mapStateToProps = state =>{
   return {
     cities: state.city.cities,
-    itineraries: state.itinerary.itineraries
+    itineraries: state.itinerary.itineraries,
   }
 }
 const mapDispatchToProps ={
-  listaItinerarioPorCiudad: itineraryAction.listaItinerarioPorCiudad
+  listaItinerarioPorCiudad: itineraryAction.listaItinerarioPorCiudad,
+  listarCiudades: cityAction.listarCiudades,
 }
-
-
 
 export default connect(mapStateToProps,mapDispatchToProps) (Itineraries)
