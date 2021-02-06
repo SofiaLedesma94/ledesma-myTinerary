@@ -15,7 +15,6 @@ const cityReducer =(state=initialState, action)=>{
             return{
                 ...state,
                 buscador: state.cities.filter(city =>city.ciudad.toLowerCase().indexOf(action.payload,0) === 0)
-
             }
       default:
       return state

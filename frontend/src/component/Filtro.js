@@ -1,8 +1,8 @@
-const Filtro =({info,buscar})=>{
+const Filtro =({buscar})=>{
     return(
         
             <input type='text' name='buscador' 
-            placeholder="find your itinerary" value={info} onChange={buscar} autocomplete="off"></input>
+            placeholder="find your itinerary"  onChange={buscar} autocomplete="off"></input>
     )
 }
 

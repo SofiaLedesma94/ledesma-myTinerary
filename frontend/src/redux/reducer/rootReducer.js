@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux'
  import cityReducer from './cityReducer'
  import itineraryReducer from './itineraryReducer'
- import activityReducer from './itineraryReducer'
+import authReducer from './authReducer'
 
 const rootReducer = combineReducers({
     city: cityReducer,
     itinerary:itineraryReducer,
-    activity: activityReducer
+    auth:authReducer
 })
 
 export default rootReducer
