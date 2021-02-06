@@ -8,6 +8,7 @@ const validator = require('../controller/validator')
 
 
 
+
 router.route('/api/cities')
 .get(citiesController.allCities)
 .post(citiesController.addCity)

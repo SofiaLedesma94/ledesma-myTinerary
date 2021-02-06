@@ -7,7 +7,7 @@ const Header =(props)=>{
     var  links= <>
     <Link to="/cities">
         <button>Cities</button>
-    </Link>
+       </Link>
     <button className="nav" onClick={()=>props.logoutUser()}>Logout</button>
     <Redirect to="/"/>
     
@@ -26,7 +26,7 @@ const Header =(props)=>{
   }
   return(
     <div className='header'>
-      <img src="./assets/login4.png" style={{width:'6vw'}}></img>
+      <img src={props.loggerUser ? props.loggerUser.userPic : "./assets/login4.png"} style={{width:'6vw'}}></img>
       <div className='nav'>
         <Link to="/">
         <button>Home</button>
