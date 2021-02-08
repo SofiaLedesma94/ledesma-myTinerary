@@ -4,6 +4,8 @@ const citiesController= require('../controller/citiesController')
 const ItinerariesController= require('../controller/ItinerariesController')
 const userController =require('../controller/userController')
 const validator = require('../controller/validator')
+const passport =require('passport')
+require('../config/passport')
 
 
 
@@ -21,6 +23,9 @@ router.route('/api/user/signup')  //creamos usuario
 .post(validator.accountToValidate,userController.signup)
 router.route('/api/user/signin')  //logueo usuario existente 
 .post(userController.signin)
+router.route('/api/ls')
+//ruta protegida por passport
+.post(passport.authenticate('jwt', {session: false}),userController.logFromLocalStorage)
 
 
  

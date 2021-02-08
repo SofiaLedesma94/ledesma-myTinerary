@@ -42,8 +42,12 @@ const userController ={
             return res.json({success:false, respuesta: 'wrong username or password'})
         }
         var token =jwt.sign({...usuarioExistente},process.env.secret_word,{})
-        return res.json({success: true, respuesta:{ token,userPic: usuarioExistente.userPic, uName:usuarioExistente.uName}})
+        return res.json({success: true, response:{ token,userPic: usuarioExistente.userPic, }})
 
+    },
+    logFromLocalStorage: (req,res)=>{
+        // capturamos los datos 
+         return res.json({success:true,response:{ token: req.body.token ,userPic: req.user.userPic}})
     }
 }
 

@@ -7,7 +7,7 @@ const authAction = {
                return respuesta.data
             }
           
-            dispatch({type:"NEW_USER", payload: respuesta.data })
+            dispatch({type:"CREATE_LOG_USER", payload: respuesta.data })
         }
     },
     logoutUser: ()=>{
@@ -16,13 +16,31 @@ const authAction = {
          dispatch({type:"LOGOUT_USER"})
        }
     },
+    logFromLocalStorage: (token,userPic)=>{
+        return async (dispatch, getState)=>{
+           try {
+            const respuesta = await axios.post('http://localhost:4000/api/ls', {token},{
+                headers: {
+                    authorization: `Bearer ${token}` 
+                }
+            })
+            
+           dispatch ({type: "CREATE_LOG_USER", payload:{response:{...respuesta.data.response}}})
+               
+           } catch (error) {
+               alert('me estas cagando')
+               console.log(error)
+               localStorage.clear()
+           }
+        }
+    },
     userLogin:(user)=>{
         return async (dispatch, getState)=>{
             const respuesta =  await axios.post('http://localhost:4000/api/user/signin',user)
             if(!respuesta.data.success){
                return respuesta.data
             }
-            dispatch({type:"LOGIN_USER", payload: respuesta.data })
+            dispatch({type:"CREATE_LOG_USER", payload: respuesta.data })
         }
     }
 

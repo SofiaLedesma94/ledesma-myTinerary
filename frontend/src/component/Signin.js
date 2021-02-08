@@ -1,6 +1,7 @@
 import { useState } from "react"
 import authAction from "../redux/actions/authAction"
 import {connect} from "react-redux"
+import swal from 'sweetalert'
 
 const Singin =(props)=>{
    const [usuarioLogueado, setUsuarioLoguead]=useState({})
@@ -28,21 +29,31 @@ const Singin =(props)=>{
        if(respuesta && !respuesta.success){
         setError([respuesta.respuesta])
        }else{
-           alert('welcome')
+           swal('welcome to mytineray')
        }
    }
 
     return (
         <>
-        <h1>Log In</h1>
-        <form action="#" target="" method="get" name="formDatosPersonales">     
-       <label >User Name</label>
-    <input type="email" name="userName" placeholder="write your email" onChange={validarInput}/>
-       <label >Password</label>
-       <input type="password" name="password"  placeholder="Enter your password" onChange={validarInput}/>
-      <button onClick={validarCuenta}>Loguear</button>
-     {error.map(item=><h6>{item}</h6>)}
-     </form>
+        <div className="ContendorInputSeparador"></div>
+        <form action="#" target="" method="get" name="formDatosPersonales">    
+            <h1>log in to your account</h1>
+           <div className="contenedorInput">
+             <label >User Name</label>
+             <input type="email" name="userName" placeholder="write your email" onChange={validarInput}/>
+           </div> 
+           <div className="contenedorInput">
+              <label >Password</label>
+              <input type="password" name="password"  placeholder="Enter your password" onChange={validarInput}/>
+           </div>
+           <div className="contenedorInput">
+             <button onClick={validarCuenta}>Log In</button>
+           </div>
+           <div className="contenedorInput">
+             {error.map(item=><h6 className="errores">{item}</h6>)}
+           </div>
+        </form>
+        <div className="ContendorInputSeparador"></div>
         </>
     )
 }

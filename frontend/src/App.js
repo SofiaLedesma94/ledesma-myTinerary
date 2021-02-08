@@ -8,6 +8,7 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import signup from './component/Signup'
 import signin  from './component/Signin'
 import {connect} from 'react-redux'
+import authAction from './redux/actions/authAction'
 
 
 function App(props) {
@@ -19,7 +20,10 @@ function App(props) {
        <Redirect to="/"/>
      </Switch>
      </>
-  }else {
+  }else if(localStorage.getItem('token','userPic')){
+     props.logFromLocalStorage(localStorage.getItem('token'), localStorage.getItem('userPic'))
+  }
+  else {
     var links = <>
     <Switch>
      <Route path="/signup" component={signup}/>
@@ -45,5 +49,8 @@ const mapStateToProps = state =>{
     loggerUser: state.auth.loggerUser
   }
 }
+const mapDispatchToProps ={
+  logFromLocalStorage: authAction.logFromLocalStorage
+}
 
-export default connect (mapStateToProps) (App);
+export default connect (mapStateToProps, mapDispatchToProps) (App);

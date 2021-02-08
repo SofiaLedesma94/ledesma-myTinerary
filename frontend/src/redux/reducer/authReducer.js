@@ -3,23 +3,20 @@ const initialState ={
 }
 const authReducer = (state=initialState, action)=>{
     switch (action.type) {
-        case "NEW_USER":
+        case "CREATE_LOG_USER":
+            localStorage.setItem('userPic', action.payload.response.userPic)
+            localStorage.setItem('token', action.payload.response.token)
             return {
                     ...state,
                     loggerUser: action.payload.response 
                   }
                   break
         case "LOGOUT_USER": 
+        localStorage.clear()
         return{
             ...state,
             loggerUser:null
         }
-        break
-        case "LOGIN_USER":
-            return{
-                ...state,
-                loggerUser: action.payload.respuesta
-            }
         default:
             return state
     }
