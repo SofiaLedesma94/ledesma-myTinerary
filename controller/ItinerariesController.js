@@ -8,6 +8,7 @@ const ItinerariesController ={
      const agregarItinerary= new Itineraries({
          title, userPic, userName, like, hours, price, hashtag, activities, comments, cityId
      })
+     
      agregarItinerary.save()
      .then(async itineraryGrabado=>{
          const itinerary= await itineraryGrabado.populate('cityId').execPopulate()
@@ -37,9 +38,27 @@ const ItinerariesController ={
        .catch(error =>{
            return res.json({success:false, respuesta:error})
        })
+    },
+    commentsItineraries : async (req, res)=>{
+        console.log(req.body)
+        const {id}= req.body
+        console.log(id)
+        const {comments, userName, userPic} = req.body
+              Itineraries.findOneAndUpdate({_id:id}, {
+            $push: {
+                comments:[{userName:userName, comment:comments, userPic:userPic}]
+            }
+        }
+        )
+        .then(abmComments=>{return res.json({success:true, respuesta: abmComments})})
+        .catch(error =>{return res.json({success: false, respuesta: error})})
+
     }
+
+
     
 
 }
 
 module.exports =ItinerariesController
+

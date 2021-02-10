@@ -1,7 +1,9 @@
 import { useState } from "react"
+import Comments from './Comments'
 
-const BotonVerMas =({actividades})=>{
-  console.log(actividades)
+
+const BotonVerMas =({usuariosPic,actividades})=>{
+
   
 const [visible,setVisible]=useState(false)
 return(<>
@@ -17,10 +19,10 @@ return(<>
          <p>{actividad.activityTitle}</p>
        <img src={actividad.activityImage} alt="descripcion de imagen"></img>
        </div>
-       
        </>
      })}
      </div>
+     <Comments usuarios={usuariosPic}/>
     <button onClick={()=>setVisible(!visible)}>See Less</button>
     </>
     )}
@@ -30,4 +32,4 @@ return(<>
 }
 
 
-export default BotonVerMas
+export default   BotonVerMas

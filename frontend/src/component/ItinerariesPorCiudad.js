@@ -7,7 +7,7 @@ import BotonVerMas from './BotonVerMas'
 
 const ItinerariesPorCiudad =(props)=>{
 
-  
+  console.log(props.loggerUser)  
     return (
         <div className='itinerary' key="keyCity">
             {props.itineraries.map(item=>{
@@ -28,7 +28,7 @@ const ItinerariesPorCiudad =(props)=>{
                   <h6 className="hashtag">{item.hashtag}</h6>
                 </div>
               </div>
-               <BotonVerMas actividades={item.activities}/>
+               <BotonVerMas usuariosPic={props.loggerUser} actividades={item.activities}/>
               </div>
               </> 
             })}
@@ -37,7 +37,8 @@ const ItinerariesPorCiudad =(props)=>{
 }
 const mapStateToProps = state =>{
     return {
-      itineraries: state.itinerary.itineraries
+      itineraries: state.itinerary.itineraries,
+      loggerUser: state.auth.loggerUser
     }
   }
   

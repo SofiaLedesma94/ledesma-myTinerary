@@ -17,6 +17,8 @@ router.route('/api/cities')
 router.route('/api/itineraries')
 .get(ItinerariesController.allItineraries)
 .post(ItinerariesController.addItinerary)
+router.route('/api/comments')
+.post(ItinerariesController.commentsItineraries)
 router.route('/api/itineraries/:id')
 .get(ItinerariesController.itinerariesForId)
 router.route('/api/user/signup')  //creamos usuario
@@ -26,6 +28,7 @@ router.route('/api/user/signin')  //logueo usuario existente
 router.route('/api/ls')
 //ruta protegida por passport
 .post(passport.authenticate('jwt', {session: false}),userController.logFromLocalStorage)
+
 
 
  

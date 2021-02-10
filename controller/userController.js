@@ -21,11 +21,11 @@ const userController ={
          var usuarioValidado= await userValidado.save()   
         // generamos el toke 
         var token = jwt.sign({...usuarioValidado}, process.env.secret_word, {} )
-        console.log(token)
      }
      return res.json({success:errores.length ===0 ? true : false,
                       respuesta: errores,
-                      response:token})
+                      //validamos que no tenga errores para mandarle los datos 
+                      response:errores.length === 0 && {token, userPic: usuarioValidado.userPic}})
                      },
 
     signin: async (req, res)=>{
@@ -42,12 +42,12 @@ const userController ={
             return res.json({success:false, respuesta: 'wrong username or password'})
         }
         var token =jwt.sign({...usuarioExistente},process.env.secret_word,{})
-        return res.json({success: true, response:{ token,userPic: usuarioExistente.userPic, }})
+        return res.json({success: true, response:{ token,userPic: usuarioExistente.userPic, userName:usuarioExistente.userName }})
 
     },
     logFromLocalStorage: (req,res)=>{
         // capturamos los datos 
-         return res.json({success:true,response:{ token: req.body.token ,userPic: req.user.userPic}})
+         return res.json({success:true,response:{ token: req.body.token ,userPic: req.user.userPic, userName: req.user.userName}})
     }
 }
 

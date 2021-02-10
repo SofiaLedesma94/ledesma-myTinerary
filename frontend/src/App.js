@@ -9,9 +9,11 @@ import signup from './component/Signup'
 import signin  from './component/Signin'
 import {connect} from 'react-redux'
 import authAction from './redux/actions/authAction'
+import {useState} from 'react'
 
 
 function App(props) {
+  const [userInvalid, setUserInvalid]=useState(false)
   if(props.loggerUser){
      var links =<>
      <Switch>
@@ -20,8 +22,11 @@ function App(props) {
        <Redirect to="/"/>
      </Switch>
      </>
-  }else if(localStorage.getItem('token','userPic')){
-     props.logFromLocalStorage(localStorage.getItem('token'), localStorage.getItem('userPic'))
+  }else if(localStorage.getItem('token')){
+   props.logFromLocalStorage(localStorage.getItem('token'))
+   .then(respuesta =>{
+     if(respuesta === '/') setUserInvalid(!userInvalid)
+   })
   }
   else {
     var links = <>

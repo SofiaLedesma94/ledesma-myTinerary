@@ -16,7 +16,7 @@ const authAction = {
          dispatch({type:"LOGOUT_USER"})
        }
     },
-    logFromLocalStorage: (token,userPic)=>{
+    logFromLocalStorage: (token)=>{
         return async (dispatch, getState)=>{
            try {
             const respuesta = await axios.post('http://localhost:4000/api/ls', {token},{
@@ -24,13 +24,15 @@ const authAction = {
                     authorization: `Bearer ${token}` 
                 }
             })
-            
+            console.log(respuesta.data)
            dispatch ({type: "CREATE_LOG_USER", payload:{response:{...respuesta.data.response}}})
-               
            } catch (error) {
-               alert('me estas cagando')
-               console.log(error)
-               localStorage.clear()
+            if(error.response.status === 401){
+                alert('invalid')
+                localStorage.clear()
+                return '/'
+            }
+              
            }
         }
     },

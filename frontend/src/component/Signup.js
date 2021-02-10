@@ -1,10 +1,11 @@
 import { useState,useEffect } from "react"
 import authAction from "../redux/actions/authAction"
 import {connect} from "react-redux"
+import GoogleLogin from 'react-google-login'
 
 const Singup =(props)=>{
    const [usuario, setUsuario]=useState({})
-   const [errores, setErrores]=useState([])
+  const [errores, setErrores]=useState([])
    const [country, setCountry]=useState([])
    const validarInput=e=>{
        const valor= e.target.value
@@ -21,14 +22,14 @@ const Singup =(props)=>{
       .then(data => setCountry(data))
     },[])
 
-    console.log(country)
+    
  
 
 
    const validarCuenta= async e=>{
        //cuando haga click en validar debemos validar los campos 
        e.preventDefault()
-       if(usuario.userName === ''|| usuario.userPic === '' || usuario.password === ''|| usuario.uName === '' || usuario.lastName === ' ' || country.country === '' ){
+       if(usuario.userName === ''|| usuario.userPic === '' || usuario.password === ''|| usuario.name === '' || usuario.lastName === ' ' || country.country === '' ){
            alert('completar los campos')
            return false 
            
@@ -39,6 +40,23 @@ const Singup =(props)=>{
         setErrores(respuesta.respuesta.details)
        }
    }
+   const responseGoogle = async (response) => {
+    if(response.error){
+      alert ('invalid account')
+    }else{
+      //podemos crear el nuevo usuario con google con la action 
+      const respuesta = await props.newUser({
+        userName: response.profileObj.email,
+        userPic: response.profileObj.imageUrl,
+        password: response.profileObj.googleId,
+        name: response.profileObj.givenName,
+        lastName: response.profileObj.familyName
+      })
+      if(respuesta && !respuesta.success){
+        setErrores(respuesta.respuesta)
+       }
+    }
+  }
 
     return (
         <>
@@ -74,7 +92,17 @@ const Singup =(props)=>{
             <div className="contenedorInput">
               <button onClick={validarCuenta}>Create Account</button>
             </div>
-            {errores.map(item=><h6>{item.message}</h6>)}  
+            <div className="contenedorInput">
+            <GoogleLogin
+               clientId="978528511816-3k9kd29jinveqkqkp46hf7ejn46vbrc7.apps.googleusercontent.com"
+               buttonText="Crear Account with Google"
+               onSuccess={responseGoogle}
+               onFailure={responseGoogle}
+               cookiePolicy={'single_host_origin'}
+            />
+            </div> 
+            {errores.map(item=><h6>{item.message}</h6>)} 
+            {errores.map(item=><h6>{item}</h6>)} 
         </form>
         </>
     )
