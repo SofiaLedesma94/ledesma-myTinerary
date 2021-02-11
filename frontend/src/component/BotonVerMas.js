@@ -2,7 +2,7 @@ import { useState } from "react"
 import Comments from './Comments'
 
 
-const BotonVerMas =({usuariosPic,actividades})=>{
+const BotonVerMas =({actividades})=>{
 
   
 const [visible,setVisible]=useState(false)
@@ -22,7 +22,7 @@ return(<>
        </>
      })}
      </div>
-     <Comments usuarios={usuariosPic}/>
+     <Comments/>
     <button onClick={()=>setVisible(!visible)}>See Less</button>
     </>
     )}

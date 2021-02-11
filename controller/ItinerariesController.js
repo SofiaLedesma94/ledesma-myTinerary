@@ -39,21 +39,23 @@ const ItinerariesController ={
            return res.json({success:false, respuesta:error})
        })
     },
-    commentsItineraries : async (req, res)=>{
-        console.log(req.body)
-        const {id}= req.body
-        console.log(id)
-        const {comments, userName, userPic} = req.body
-              Itineraries.findOneAndUpdate({_id:id}, {
-            $push: {
-                comments:[{userName:userName, comment:comments, userPic:userPic}]
+    commentsItineraries :  (req, res)=>{
+        console.log(req.body.comments)
+        const {userName, comment, userPic}= req.body.comments
+        console.log( userName, comment, userPic)
+          Itineraries.findOneAndUpdate({_id:req.body.comments.id},
+            { $push: {
+                comments:{userName:userName, comment:comment, userPic:userPic}
             }
-        }
+            }
         )
-        .then(abmComments=>{return res.json({success:true, respuesta: abmComments})})
+        .then( respuesta =>{
+            return res.json({success:true, respuesta: respuesta})
+        })
         .catch(error =>{return res.json({success: false, respuesta: error})})
-
+         
     }
+
 
 
     

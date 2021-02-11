@@ -9,8 +9,8 @@ import axios from 'axios'
     commentsItineraries: (comments)=>{
 
         return async (dispatch, getState)=>{
-             const respuesta = await axios.put('http://localhost:4000/api/itineraries', comments)
-            dispatch ({type:"COMMENTS", payload:respuesta.data.response})
+             const respuesta = await axios.post('http://localhost:4000/api/comments', {comments})
+            dispatch ({type:"COMMENTS", payload:respuesta.data.respuesta})
         }
     }
  }

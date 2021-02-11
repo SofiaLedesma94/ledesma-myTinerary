@@ -19,9 +19,9 @@ const Singin =(props)=>{
    const validarCuenta= async e=>{
        //cuando haga click en validar debemos validar los campos 
        e.preventDefault()
-       console.log(usuarioLogueado)
+    
        if(usuarioLogueado.userName === '' || usuarioLogueado.password === ''){
-           alert('completar los campos')
+        swal('completar los campos')
            return false 
        }
        const respuesta = await props.userLogin(usuarioLogueado)
