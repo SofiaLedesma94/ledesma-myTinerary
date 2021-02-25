@@ -1,6 +1,6 @@
 const mongoose =require('mongoose')
 //conexion a BD
-mongoose.connect('mongodb+srv://sofiledesma:paramore@cluster0.xwhfl.mongodb.net/<dbname>?retryWrites=true&w=majority',{
+mongoose.connect(process.env.MONGODB_URI,{
     useNewUrlParser:true,
     useCreateIndex:true,
     useUnifiedTopology: true,
