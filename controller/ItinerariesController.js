@@ -40,12 +40,14 @@ const ItinerariesController ={
        })
     },
     commentsItineraries :  (req, res)=>{
-        console.log(req.body.comments)
-        const {userName, comment, userPic}= req.body.comments
-        console.log( userName, comment, userPic)
-          Itineraries.findOneAndUpdate({_id:req.body.comments.id},
+       
+        const {id}= req.body
+        const {userName, comment, userPic}= req.body
+        console.log(req.body)
+        
+          Itineraries.findOneAndUpdate({_id:id},
             { $push: {
-                comments:{userName:userName, comment:comment, userPic:userPic}
+                comments:{userName:userName, comment: comment, userPic:userPic}
             }
             }
         )
@@ -55,10 +57,6 @@ const ItinerariesController ={
         .catch(error =>{return res.json({success: false, respuesta: error})})
          
     }
-
-
-
-    
 
 }
 

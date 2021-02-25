@@ -1,14 +1,15 @@
 
+
 import { connect } from 'react-redux'
-import itineraryAction from '../redux/actions/itineraryAction'
 import BotonVerMas from './BotonVerMas'
 
 
 
 const ItinerariesPorCiudad =(props)=>{  
-    return (
+  console.log(props.itineraries)
+   return (
         <div className='itinerary' key="keyCity">
-            {props.itineraries.map(item=>{
+             { props.itineraries.map(item=>{
               return <>
               <div className="contenedorItinerario" key="keyItinerary">
               <div className="itinerario" key="itineraryCont">
@@ -40,8 +41,6 @@ const mapStateToProps = state =>{
   }
   
   
-  const mapDispatchToProps ={
-    listaItinerarioPorCiudad: itineraryAction.listaItinerarioPorCiudad
-  }
 
-export default connect(mapStateToProps, mapDispatchToProps) (ItinerariesPorCiudad)
+
+export default connect(mapStateToProps) (ItinerariesPorCiudad)

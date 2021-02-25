@@ -6,10 +6,11 @@ import axios from 'axios'
             dispatch({type:"ALLITINERARIES", payload: data.data.respuesta})
         }
     },
-    commentsItineraries: (comments)=>{
+    commentsItineraries: comments=>{
 
         return async (dispatch, getState)=>{
-             const respuesta = await axios.post('http://localhost:4000/api/comments', {comments})
+             const respuesta = await axios.post('http://localhost:4000/api/comments', comments)
+             console.log(respuesta)
             dispatch ({type:"COMMENTS", payload:respuesta.data.respuesta})
         }
     }

@@ -14,9 +14,12 @@ const Itineraries=(props)=>{
       const lugar=props.cities.filter(lugar=>lugar._id === id)
       setCity(lugar[0])
       props.listaItinerarioPorCiudad(id)
+      if(lugar.length === 0){
+       return props.history.push('/')
+      }
    },[])
    
- 
+ console.log(props.itineraries)
     return (
       <>
        <div className="Itineraries" key="keyPorId">
@@ -26,7 +29,7 @@ const Itineraries=(props)=>{
 
         </div>
         <h3>Available MyTineraries:</h3>
-        {props.itineraries.length === 0 ? <h2>No Itineraries yet!</h2> : <ItinerariesPorCiudad/>}
+        {!props.itineraries ? <h2>No Itineraries yet!</h2> : <ItinerariesPorCiudad/>}
         
       </div>
       </>
@@ -40,7 +43,7 @@ const mapStateToProps = state =>{
 }
 const mapDispatchToProps ={
   listaItinerarioPorCiudad: itineraryAction.listaItinerarioPorCiudad,
-  listarCiudades: cityAction.listarCiudades,
+  listarCiudades: cityAction.listarCiudades
 }
 
 export default connect(mapStateToProps,mapDispatchToProps) (Itineraries)

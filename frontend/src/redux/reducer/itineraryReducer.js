@@ -1,7 +1,8 @@
 import Itineraries from "../../component/Itineraries"
 
 const initialState={
-    itineraries:[]
+    itineraries:[],
+    comments:[]
 }
 
 const itineraryReducer =(state=initialState,action)=>{
@@ -15,8 +16,14 @@ const itineraryReducer =(state=initialState,action)=>{
             case "COMMENTS":
                 return {
                     ...state,
-                    Itineraries: action.payload
+                    comments: action.payload
                 }
+                break 
+                case "ALLCOMMENTS":
+                    return {
+                        ...state,
+                        comments: action.payload
+                    }
     default:
         return state
     }
