@@ -9,6 +9,6 @@ app.use(express.json())
 app.use(cors())
 app.use('/', router)
 
-const PORT = process.env.PORT || 4000
+const port = process.env.PORT 
 const host=process.env.HOST || '0.0.0.0' 
-app.listen(PORT,host,console.log(`IS RUNNIG PORT ${PORT}`))
+app.listen(port,host,console.log('app listening on port 4000'))
