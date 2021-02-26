@@ -31,13 +31,14 @@ const ItinerariesController ={
     },
     itinerariesForId: async (req, res)=>{
        const {id}=req.params
-       const itinerarioCiudad= await Itinerary.find({cityId:id})
+       const itinerarioCiudad= await Itinerary.find({cityId:id}).populate('cityId')
        .then(itinerarioCiudad =>{
            return res.json({success:true, respuesta: itinerarioCiudad})
        })
        .catch(error =>{
            return res.json({success:false, respuesta:error})
        })
+       
     },
     commentsItineraries :  (req, res)=>{
        
