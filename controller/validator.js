@@ -6,7 +6,6 @@ const validator ={
     const schema  = Joi.object({
       userName: Joi.string().trim().required().email({tlds: { allow:false}}),
       password: Joi.string().trim().required().min(6),
-      userPic: Joi.string().uri(),
       name: Joi.string().trim().required().max(10),
       lastName: Joi.string().trim().required().max(10)
     })

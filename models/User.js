@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const userSchema = new mongoose.Schema({
     userName: String,
     password: String,
-    userPic: String,
     uName: String,
     lastName: String, 
     rol: {type:String, default:"noadmin"}
