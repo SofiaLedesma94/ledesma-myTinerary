@@ -2,7 +2,7 @@ import Itineraries from "../../component/Itineraries"
 
 const initialState={
     itineraries:[],
-    comments:[]
+    Comments:[]
 }
 
 const itineraryReducer =(state=initialState,action)=>{
@@ -16,18 +16,13 @@ const itineraryReducer =(state=initialState,action)=>{
             case "COMMENTS":
                 return {
                     ...state,
-                    comments: action.payload
+                    itineraries: state.itineraries.map(comment=>comment._id === action.payload._id ? action.payload : comment)
                 }
-                break 
-                case "ALLCOMMENTS":
-                    return {
-                        ...state,
-                        comments: action.payload
-                    }
+               
     default:
         return state
     }
-    
+   
 }
 
 export default itineraryReducer

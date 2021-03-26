@@ -6,7 +6,6 @@ import BotonVerMas from './BotonVerMas'
 
 
 const ItinerariesPorCiudad =(props)=>{  
-  console.log(props.itineraries)
    return (
         <div className='itinerary' key="keyCity">
              { props.itineraries.map(item=>{
@@ -27,7 +26,7 @@ const ItinerariesPorCiudad =(props)=>{
                   <h6 className="hashtag">{item.hashtag}</h6>
                 </div>
               </div>
-               <BotonVerMas  actividades={item.activities}/>
+               <BotonVerMas  actividades={item.activities} id={item._id}/>
               </div>
               </> 
             })}

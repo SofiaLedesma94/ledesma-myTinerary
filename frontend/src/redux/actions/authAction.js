@@ -27,7 +27,7 @@ const authAction = {
             console.log(respuesta.data)
            dispatch ({type: "CREATE_LOG_USER", payload:{response:{...respuesta.data.response}}})
            } catch (error) {
-            if(error.response.status === 401){
+            if(error.response){
                 alert('invalid')
                 localStorage.clear()
                 return '/'

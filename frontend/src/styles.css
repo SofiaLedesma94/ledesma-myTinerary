@@ -281,6 +281,7 @@ footer h5{
     font-size: 3vh;
    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
    padding: 0;
+   min-width: 15px;
 }
 
 form {
@@ -346,4 +347,27 @@ form h1{
 .contenedorInput select {
   width: 14.5vw;
   border-radius: 10px;
+}
+/*comentario*/
+.abmComentarioFlex{
+    display: flex;
+    justify-content: space-between;
+}
+.btnEditComment{
+    opacity: 0.8;
+    padding: 1px;
+    margin-right: 5vw;
+
+}
+.btnNewCommentEdit{
+    opacity: 0.8;
+    padding: 1px;
+    text-align: center;
+    margin-left: -1.3vw;
+    padding: 6px;
+}
+.btnEditComment :hover{
+    background-color: black;
+    font-weight: bold;
+    
 }

@@ -6,12 +6,24 @@ import axios from 'axios'
             dispatch({type:"ALLITINERARIES", payload: data.data.respuesta})
         }
     },
-    commentsItineraries: comments=>{
+    commentsItineraries: (comments)=>{
 
         return async (dispatch, getState)=>{
              const respuesta = await axios.post('http://localhost:4000/api/comments', comments)
-             console.log(respuesta)
             dispatch ({type:"COMMENTS", payload:respuesta.data.respuesta})
+        }
+    },
+    deleteComment: (iditinerario,idcomment)=>{
+        return async (dispatch, getState)=>{
+            const respuesta =await axios.delete('http://localhost:4000/api/comments/'+iditinerario+'/'+idcomment)
+            dispatch ({type:"COMMENTS", payload:respuesta.data.response})
+        }
+    },
+    editComment: (iditinerario, idcomment, editedComment)=>{
+        return async (dispatch, getState)=>{
+            
+            const respuesta = await axios.put('http://localhost:4000/api/comments/'+iditinerario+'/'+idcomment,{editedComment})
+            dispatch ({type:"COMMENTS", payload:respuesta.data.response})
         }
     }
  }

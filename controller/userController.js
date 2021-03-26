@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const userController ={
     signup: async (req, res)=>{
         var errores=[]
-        const {userName, password, userPic, uName,lastName, rol } = req. body
+        const {userName, password, userPic, name,lastName, rol } = req. body
         
     //validamos usuario unico 
     const existingUser= await User.findOne({userName:userName})
@@ -16,7 +16,7 @@ const userController ={
           //hasheamos el password antes de guardarlo en la bd
          const passHasheado= bcrypt.hashSync(password,10)
          const userValidado=new User({
-         userName ,password:passHasheado,userPic,uName,lastName
+         userName ,password:passHasheado,userPic,name,lastName
      })
          var usuarioValidado= await userValidado.save()   
         // generamos el toke 
@@ -42,11 +42,12 @@ const userController ={
             return res.json({success:false, respuesta: 'wrong username or password'})
         }
         var token =jwt.sign({...usuarioExistente},process.env.secret_word,{})
-        return res.json({success: true, response:{ token,userPic: usuarioExistente.userPic, userName:usuarioExistente.userName }})
+        return res.json({success: true, response:{ token, userPic: usuarioExistente.userPic, userName:usuarioExistente.userName }})
 
     },
     logFromLocalStorage: (req,res)=>{
         // capturamos los datos 
+        console.log(req.user)
          return res.json({success:true,response:{ token: req.body.token ,userPic: req.user.userPic, userName: req.user.userName}})
     }
 }

@@ -37,7 +37,7 @@ const Singup =(props)=>{
        setErrores([])
        const respuesta = await props.newUser(usuario)
        if(respuesta && !respuesta.success){
-        setErrores(respuesta.respuesta.details)
+         setErrores(respuesta.response.details)
        }
    }
    const responseGoogle = async (response) => {
@@ -102,7 +102,7 @@ const Singup =(props)=>{
             />
             </div> 
             {errores.map(item=><h6>{item.message}</h6>)} 
-            {errores.map(item=><h6>{item}</h6>)} 
+            {errores.map(item=><h6>{item.message}</h6>)}  
         </form>
         </>
     )

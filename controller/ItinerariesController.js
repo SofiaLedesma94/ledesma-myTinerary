@@ -44,20 +44,51 @@ const ItinerariesController ={
        
         const {id}= req.body
         const {userName, comment, userPic}= req.body
-        console.log(req.body)
+       
         
           Itineraries.findOneAndUpdate({_id:id},
             { $push: {
                 comments:{userName:userName, comment: comment, userPic:userPic}
             }
-            }
+            },{new:true} //muestra la version actualizada o nueva 
         )
         .then( respuesta =>{
             return res.json({success:true, respuesta: respuesta})
         })
         .catch(error =>{return res.json({success: false, respuesta: error})})
          
+    },
+    deleteComment:(req,res)=>{
+         const id= req.params.iditinerario
+        const idComment = req.params.idcomment
+    
+        Itineraries.findByIdAndUpdate({_id: id},{
+            $pull:{
+                comments:{_id:idComment}
+            }
+        },{new:true})
+        .then(respuesta=>{
+            return res.json({success:true, response:respuesta, message:"delete comment"})
+            
+        })
+        .catch(error=>{
+            return res.json({success:false, response:error})
+        })
+    },
+    editComment:(req, res)=>{
+       
+        const id= req.params.iditinerario
+        const idComment=req.params.idcomment
+        const editedComment = req.body.editedComment
+       Itineraries.findOneAndUpdate({_id:id,'comments._id':idComment},
+       { $set: {'comments.$.comment':editedComment}},{new:true})
+        .then( response => {
+
+            res.json({success:true,message:'Comment edited',response})})
+
+        .catch(error => res.json({success:false,error}))
     }
+    
 
 }
 

@@ -5,6 +5,7 @@ const validator ={
       //las validaciones con joi (es antes de llegar al controlador)
     const schema  = Joi.object({
       userName: Joi.string().trim().required().email({tlds: { allow:false}}),
+      userPic: Joi.string().uri(),
       password: Joi.string().trim().required().min(6),
       name: Joi.string().trim().required().max(10),
       lastName: Joi.string().trim().required().max(10)

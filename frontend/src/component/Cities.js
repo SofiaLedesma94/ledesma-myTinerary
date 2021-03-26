@@ -40,7 +40,7 @@ const Cities =(props)=>{
        {props.cities.map(city=>{
             return(
                 <>
-                   <div className='cities' key="cardCity" >
+                   <div className='cities' key={city._id} >
                    <Link to={`/itineraries/${city._id}`}>
                      <div className='cityImg' style={{ backgroundImage:`url(${city.url})`}}><p>
                       {city.ciudad}</p> </div>

@@ -19,7 +19,7 @@ const Itineraries=(props)=>{
       }
    },[])
    
- console.log(props.itineraries)
+
     return (
       <>
        <div className="Itineraries" key="keyPorId">

@@ -2,7 +2,7 @@ import { useState } from "react"
 import Comments from './Comments'
 
 
-const BotonVerMas =({actividades})=>{
+const BotonVerMas =({actividades,id})=>{
 
   
 const [visible,setVisible]=useState(false)
@@ -15,14 +15,14 @@ return(<>
      {actividades.map(actividad=>{
        return<>
       
-       <div className="containerImg">
+       <div className="containerImg" key={actividad._id}>
          <p>{actividad.activityTitle}</p>
        <img src={actividad.activityImage} alt="descripcion de imagen"></img>
        </div>
        </>
      })}
      </div>
-     <Comments/>
+     <Comments idItinerario={id}/>
     <button onClick={()=>setVisible(!visible)}>See Less</button>
     </>
     )}
