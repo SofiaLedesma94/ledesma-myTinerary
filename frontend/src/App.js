@@ -39,10 +39,10 @@ function App(props) {
   }
   console.log('componente actual de loggeruser', props)
   return (
-    <div className="app">
-      <BrowserRouter>
+    <div className="app" key='browser'>
+      <BrowserRouter key='br'>
       <Header/>
-       <Route exact path="/" component={Inicio}/>
+       <Route exact path="/" component={Inicio} key='inicio'/>
        {links}
       </BrowserRouter>
     <Footer/>

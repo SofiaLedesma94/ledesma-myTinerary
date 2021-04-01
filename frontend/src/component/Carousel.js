@@ -57,7 +57,7 @@ const Example = (props) => {
       <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
-    
+      
       >
         <div className='contenedorFotos'>
         {item.map(foto=>{
@@ -76,8 +76,9 @@ const Example = (props) => {
       activeIndex={activeIndex}
       next={next}
       previous={previous}
+      key='carousel'
     >
-      <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+      <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex}  />
       {slides}
       <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
       <CarouselControl direction="next" directionText="Next" onClickHandler={next} />

@@ -16,7 +16,9 @@ return(<>
        return<>
       
        <div className="containerImg" key={actividad._id}>
-         <p>{actividad.activityTitle}</p>
+         <div className="tituloactividad">
+           <p>{actividad.activityTitle}</p>
+         </div>
        <img src={actividad.activityImage} alt="descripcion de imagen"></img>
        </div>
        </>

@@ -1,6 +1,8 @@
 import { connect } from 'react-redux'
 import React, {useState} from 'react'
 import  itineraryAction from '../redux/actions/itineraryAction'
+import EditIcon from '@material-ui/icons/Edit';
+import SendIcon from '@material-ui/icons/Send';
 
 const EditComment =({comentario,props, idComment})=>{
  
@@ -13,6 +15,7 @@ const EditComment =({comentario,props, idComment})=>{
        setEditar(true)
       }
      
+      
    
       const readInput =()=>{
         setEditedComment(document.getElementById('edited_comment').value)
@@ -25,10 +28,14 @@ const EditComment =({comentario,props, idComment})=>{
     return(        
      <>
        {editar ? <div className="abmComentario">
-        <input id='edited_comment' onChange={readInput} value={editedComment} style={{marginLeft:'1vw'}}/>
-        <h6 onClick={()=>sendEditComment()} className="btnNewCommentEdit">Send new comment</h6>
-       </div> : <h6>{comentario}</h6>}
-       <h6 onClick={()=>editarComentario()} className="btnEditComment">Edit Comment</h6>
+        <input id='edited_comment' onChange={readInput} value={editedComment} style={{marginLeft:'1vw', 
+        textAlign:'center',border:'0', borderRadius:'10px', width:'30vw'}}/>
+        {/* <h6 onClick={()=>sendEditComment()} className="btnNewCommentEdit">Send new comment</h6> */}
+        <SendIcon onClick={()=>sendEditComment()} className="btnNewCommentEdit"/>
+       </div> : <h6 style={{textAlign:'center',
+      border:'0', marginLeft:'1vw', backgroundColor:'white',width:'30vw', padding:'1px'}}>{comentario}</h6>}
+       <EditIcon  onClick={()=>editarComentario()} className="btnEditComment"/>
+       {/* <h6 onClick={()=>editarComentario()} className="btnEditComment">Edit Comment</h6> */}
      </>
     )
 

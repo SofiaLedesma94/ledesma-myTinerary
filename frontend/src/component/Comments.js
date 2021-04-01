@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react'
 import swal from 'sweetalert'
 import  itineraryAction from '../redux/actions/itineraryAction'
 import Comentary from '../component/Comentary'
+import SendIcon from '@material-ui/icons/Send';
 const Comments = (props)=>{
     const [comments,setComment] =useState({})
     const validaComments= e =>{
@@ -51,8 +52,10 @@ const Comments = (props)=>{
          
            <div className="abmComentarioFlex">
             <input placeholder="enter comment" name="comment" onChange={validaComments} style={{marginLeft:'1vw', width:'40vw', 
-            marginRight:'1vw', padding:'0px', textAlign:'center'}}></input>
-            <h6  onClick={(e)=>enviarComment(e)} className="btnEditComment" >Send New Comment</h6>
+            marginRight:'1vw', padding:'0px', textAlign:'center', border:'0'}}></input>
+
+            <SendIcon onClick={(e)=>enviarComment(e)} className="btnEditComment"/>
+           
           </div>  
           </>  
          )

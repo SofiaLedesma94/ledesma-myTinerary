@@ -5,12 +5,14 @@ import Carousel from './Carousel'
 
 const Inicio =()=>{
     return (
-        <>
-     <Section/>
+        
+    <div key='rutas'>
+    <Section/>
      <Flecha/>
      <Titulo/>
      <Carousel/>
-      </>
+    </div>
+      
     )
 }
 

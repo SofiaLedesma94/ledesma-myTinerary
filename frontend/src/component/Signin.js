@@ -42,6 +42,8 @@ const Singin =(props)=>{
         })
         if(respuesta && !respuesta.success){
             setError(respuesta.respuesta)
+         }else{
+          swal('welcome to mytineray')
          }
       }
   }
