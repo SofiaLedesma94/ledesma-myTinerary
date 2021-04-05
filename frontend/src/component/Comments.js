@@ -26,7 +26,7 @@ const Comments = (props)=>{
     const enviarComment = async  e =>{
         e.preventDefault()
       if(comments.comment === ''){
-          alert('complete campos')
+          swal('complete campos')
           return false
       }
       const respuesta = await props.commentsItineraries(comments)
@@ -39,7 +39,7 @@ const Comments = (props)=>{
 
  return (
           <>
-             <div>
+             <div className="containerAllComments">
              
              {props.itineraries.map(item=>{
                  return(
@@ -51,10 +51,10 @@ const Comments = (props)=>{
              </div>
          
            <div className="abmComentarioFlex">
-            <input placeholder="enter comment" name="comment" onChange={validaComments} style={{marginLeft:'1vw', width:'40vw', 
-            marginRight:'1vw', padding:'0px', textAlign:'center', border:'0'}}></input>
+            <input placeholder="Write your comment" name="comment" onChange={validaComments} style={{marginLeft:'1vw', width:'40vw', 
+            marginRight:'1vw', padding:'0px', textAlign:'center', border:'0', height:'10vh'}}></input>
 
-            <SendIcon onClick={(e)=>enviarComment(e)} className="btnEditComment"/>
+            <SendIcon onClick={(e)=>enviarComment(e)} style={{marginTop:'4vh'}} className="btnEditComment"/>
            
           </div>  
           </>  

@@ -27,11 +27,10 @@ console.log(props.loggerUser.userName)
            return(
               <div key={item._id} className="abmComentario">
 
-                <h6 style={{marginLeft:'1vw'}}>{item.userName}</h6>
-
                 <div className="abmComentarioFlex">
+                  <h6 style={{marginLeft:'1vw'}}>{item.userName}</h6>
                   {props.loggerUser.userName === item.userName ? <><EditComment  comentario={item.comment} props={props} idComment={item._id}/>
-                  <DeleteIcon onClick={()=>eliminarComment(item._id)} className="btnEditComment"/> </> : <h6>{item.comment}</h6>}
+                  <DeleteIcon onClick={()=>eliminarComment(item._id)} className="btnEditComment"/> </> : <h6 style={{flex:'2', textAlign:'center'}}>{item.comment}</h6>}
 
                    {/* <h6 onClick={()=>eliminarComment(item._id)} className="btnEditComment">Delete</h6> */}
                 </div>

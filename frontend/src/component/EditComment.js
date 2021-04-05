@@ -30,12 +30,14 @@ const EditComment =({comentario,props, idComment})=>{
        {editar ? <div className="abmComentario">
         <input id='edited_comment' onChange={readInput} value={editedComment} style={{marginLeft:'1vw', 
         textAlign:'center',border:'0', borderRadius:'10px', width:'30vw'}}/>
-        {/* <h6 onClick={()=>sendEditComment()} className="btnNewCommentEdit">Send new comment</h6> */}
+        
         <SendIcon onClick={()=>sendEditComment()} className="btnNewCommentEdit"/>
+
        </div> : <h6 style={{textAlign:'center',
       border:'0', marginLeft:'1vw', backgroundColor:'white',width:'30vw', padding:'1px'}}>{comentario}</h6>}
+      
        <EditIcon  onClick={()=>editarComentario()} className="btnEditComment"/>
-       {/* <h6 onClick={()=>editarComentario()} className="btnEditComment">Edit Comment</h6> */}
+       
      </>
     )
 
