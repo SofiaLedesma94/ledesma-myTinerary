@@ -35,6 +35,7 @@ const Cities =(props)=>{
     ) 
    return (
       <div className='city' key="keyCity">
+        
        <div key="title" className="title"><h1>Cities</h1></div>
        <Filtro  buscar={BuscarCity}/>
        {props.cities.map(city=>{
@@ -60,7 +61,8 @@ const Cities =(props)=>{
 const mapStateToProps = state =>{
   return {
     cities: state.city.cities,
-    buscador: state.city.buscador
+    buscador: state.city.buscador,
+    loggerUser : state.auth.loggerUser
   }
 }
 

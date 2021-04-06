@@ -1,6 +1,7 @@
 import {Link, Redirect} from 'react-router-dom'
 import {connect} from "react-redux"
 import authAction from '../redux/actions/authAction'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 const Header =(props)=>{
   if(props.loggerUser){
     //links que puede ver el usuario logueado 
@@ -26,7 +27,12 @@ const Header =(props)=>{
   }
   return(
     <div className='header'>
-      <img src={props.loggerUser ? props.loggerUser.userPic : "./assets/login4.png"} style={{width:'6vw'}}></img>
+      {props.loggerUser ? <><img src={props.loggerUser.userPic} style={{width:'6vw'}}></img></>:<AccountCircleIcon style={{
+        color:'white',
+        width:'50vw',
+        height:'10vh'
+      }}/>}
+      
       <div className='nav'>
         <Link to="/">
         <button>Home</button>
