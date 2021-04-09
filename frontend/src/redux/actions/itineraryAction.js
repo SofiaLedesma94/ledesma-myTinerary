@@ -25,6 +25,13 @@ import axios from 'axios'
             const respuesta = await axios.put('http://localhost:4000/api/comments/'+iditinerario+'/'+idcomment,{editedComment})
             dispatch ({type:"COMMENTS", payload:respuesta.data.response})
         }
+    },
+    valorattion:(iditinerario,like)=>{
+        return async (dispatch,getState)=>{
+            const data = await axios.put('http://localhost:4000/api/itinerarios/'+iditinerario,{like})
+            console.log(data)
+            dispatch ({type:"VALORATION", payload:data.data.response})
+        }
     }
  }
 

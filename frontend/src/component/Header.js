@@ -29,7 +29,7 @@ const Header =(props)=>{
     <div className='header'>
       {props.loggerUser ? <><img src={props.loggerUser.userPic} style={{width:'6vw'}}></img></>:<AccountCircleIcon style={{
         color:'white',
-        width:'50vw',
+        width:'30vw',
         height:'10vh'
       }}/>}
       

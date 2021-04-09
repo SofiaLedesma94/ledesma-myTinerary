@@ -11,7 +11,7 @@ html *{
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
-    height: 25vh;
+    height: 20vh;
     justify-content: center;
 }
 .section h3{

@@ -18,6 +18,13 @@ const itineraryReducer =(state=initialState,action)=>{
                     ...state,
                     itineraries: state.itineraries.map(comment=>comment._id === action.payload._id ? action.payload : comment)
                 }
+                break 
+                case "VALORATION":
+                return{
+                    ...state,
+                    Comments:action.payload
+                }
+                
                
     default:
         return state

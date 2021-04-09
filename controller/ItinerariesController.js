@@ -87,6 +87,19 @@ const ItinerariesController ={
             res.json({success:true,message:'Comment edited',response})})
 
         .catch(error => res.json({success:false,error}))
+    },
+    valorattion:(req, res)=>{
+       
+        const id= req.params.iditinerario
+        const valor=req.body
+        console.log(req.params.iditinerario, req.body)
+       Itineraries.findOneAndUpdate({_id:id},
+       { $set: like=valor},{new:true})
+        .then( response => {
+
+            res.json({success:true,message:'success valoration',response})})
+
+        .catch(error => res.json({success:false,error}))
     }
     
 

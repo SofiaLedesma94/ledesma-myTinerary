@@ -31,6 +31,9 @@ router.route('/api/user/signin')  //logueo usuario existente
 router.route('/api/ls')
 //ruta protegida por passport
 .post(passport.authenticate('jwt', {session: false}),userController.logFromLocalStorage)
+//valoration de itinerario 
+router.route('/api/itinerarios/:iditinerario')
+.put(ItinerariesController.valorattion)
 
 
 
