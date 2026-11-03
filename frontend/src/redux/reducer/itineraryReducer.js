@@ -1,5 +1,3 @@
-import Itineraries from "../../component/Itineraries"
-
 const initialState={
     itineraries:[],
     Comments:[]
