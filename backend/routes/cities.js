@@ -8,5 +8,8 @@ router.use(dbReady)
 router.route('/api/cities')
   .get(citiesController.allCities)
   .post(citiesController.addCity)
+router.route('/api/cities/:id')
+  .put(citiesController.editCity)
+  .delete(citiesController.deleteCity)
 
 module.exports = router

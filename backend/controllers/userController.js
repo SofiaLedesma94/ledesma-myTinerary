@@ -64,6 +64,7 @@ const userController = {
       }
 
       const token = jwt.sign({ ...existingUser }, process.env.secret_word, {})
+      console.log(existingUser)
       return res.json({
         success: true,
         response: {

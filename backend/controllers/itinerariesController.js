@@ -3,6 +3,7 @@ const Itineraries = require('../models/Itinerary')
 const ItinerariesController ={
     addItinerary: async (req, res) =>{
         //addItinerary recibe por el body las propiedades y las destructuramos 
+        console.log(req.body)
      const {title,userPic, userName,like, hours,price, hashtag,activities,comments, cityId}= req.body
      const agregarItinerary= new Itineraries({
          title, userPic, userName, like, hours, price, hashtag, activities, comments, cityId
@@ -18,6 +19,7 @@ const ItinerariesController ={
      })
 
     },
+    
     allItineraries: (req, res)=>{
         Itineraries.find()
         .then(data=>{
