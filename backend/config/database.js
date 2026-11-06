@@ -1,10 +1,11 @@
-const mongoose =require('mongoose')
-mongoose.set('bufferCommands', false)
-mongoose.connect(process.env.MONGODB_URI,{
-    useNewUrlParser:true,
-    useCreateIndex:true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
+const mongoose = require('mongoose');
+
+const MONGO_URI = process.env.MONGODB_URI;
+
+mongoose.connect(MONGO_URI)
+.then(() => {
+    console.log("📦 ¡CONEXIÓN EXITOSA A MONGODB ATLAS!");
 })
-.then(respuesta => console.log('Database connected'))
-.catch(error => console.log(error))
+.catch((error) => {
+    console.error("❌ ERROR DETALLADO DE MONGO:", error.message);
+});

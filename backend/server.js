@@ -1,17 +1,24 @@
-const path = require('path')
-require('dotenv').config({ path: path.join(__dirname, '..', '.env') })
-require('./config/database')
-const express = require('express')
-const cors = require('cors')
-const router = require('./routes/index')
-const errorHandler = require('./middlewares/errorHandler')
+const path = require('path');
+const express = require('express');
+const cors = require('cors');
 
-const app = express()
-const port = process.env.PORT || 4000
+// Esto le dice explícitamente que busque el .env un nivel arriba (en la raíz del proyecto)
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
-app.use(express.json())
-app.use(cors())
-app.use('/', router)
-app.use(errorHandler)
+console.log("Estado MONGO_URI:", process.env.MONGODB_URI ? "✅ Cargada correctamente" : "❌ No encontrada o vacía");
 
-app.listen(port, () => console.log(`app listening on port ${port}`))
+require('./config/database');
+const router = require('./routes/index');
+const errorHandler = require('./middlewares/errorHandler');
+
+const app = express();
+const port = process.env.PORT || 4000;
+
+app.use(express.json());
+app.use(cors());
+app.use('/', router);
+app.use(errorHandler);
+
+app.listen(port, () => {
+  console.log(`🚀 Servidor de MyTinerary corriendo en el puerto ${port}`);
+});
