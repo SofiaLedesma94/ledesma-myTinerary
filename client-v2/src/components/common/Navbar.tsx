@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { User, LogIn, LogOut } from 'lucide-react';
-// import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { selectUser, selectIsAuthenticated, selectUserRole } from '../../redux/user/authSelector'; 
+import { logout as logoutAction } from  '../../redux/user/authSlice';
 
-// 1. Definimos tu array de elementos del menú con sus respectivos roles y permisos
+
+
+
 const menuItems = [
   {
     path: '/',
@@ -24,30 +28,27 @@ const menuItems = [
 
 export const Navbar: React.FC = () => {
   const location = useLocation();
+  const dispatch = useAppDispatch();
+
+  // 3. Obtenemos los datos directamente desde el estado global de Redux
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
+  const user = useAppSelector(selectUser);
+  const currentRole = useAppSelector(selectUserRole); // Devuelve 'guest', 'user' o 'admin'
 
   // Páginas donde solo queremos mostrar el logo (sin menú de navegación)
   const minimalNavbarPaths = ['/auth/signin', '/auth/signup'];
   const isMinimalNavbar = minimalNavbarPaths.includes(location.pathname);
 
- 
-  const user = {
-    logged: false,          // Cambia a true para probar usuario logueado
-    role: 'guest',          // Puede ser 'guest', 'user' o 'admin'
-    name: 'Sofia',
-  };
-
-  // Función para determinar el rol actual del usuario y evaluar si puede ver el item
-  const getCurrentRole = () => {
-    if (!user.logged) return 'guest';
-    return user.role; // 'user' o 'admin'
-  };
-
-  const currentRole = getCurrentRole();
   const isActive = (path: string) => location.pathname === path;
+
+  const handleLogout = () => {
+    dispatch(logoutAction());
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-slate-100 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 font-bold text-xl text-slate-900">
           <img
@@ -62,7 +63,7 @@ export const Navbar: React.FC = () => {
           <>
             <nav className="hidden md:flex items-center gap-8 font-medium">
               {menuItems
-                .filter((item) => item.roles.includes(currentRole)) // Filtra según el rol del usuario
+                .filter((item) => item.roles.includes(currentRole)) // Filtra según el rol actual del usuario
                 .map((item) => (
                   <Link
                     key={item.path}
@@ -80,7 +81,7 @@ export const Navbar: React.FC = () => {
 
             {/* Auth Actions (Login / Register o Perfil) */}
             <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
-              {!user.logged ? (
+              {!isAuthenticated ? (
                 <>
                   <Link
                     to="/auth/signin"
@@ -100,16 +101,31 @@ export const Navbar: React.FC = () => {
               ) : (
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2">
-                    <div className="w-9 h-9 rounded-full bg-teal-50 text-[#0D9488] flex items-center justify-center font-bold text-sm border border-teal-100">
-                      {user.name.charAt(0)}
-                    </div>
+                    {/* Si el usuario tiene userPic mostramos su imagen, sino la inicial de su nombre */}
+                    {user?.userPic ? (
+                      <img 
+                        src={user.userPic} 
+                        alt={user.userName} 
+                        className="w-9 h-9 rounded-full object-cover border border-teal-100" 
+                      />
+                    ) : (
+                      <div className="w-9 h-9 rounded-full bg-teal-50 text-[#0D9488] flex items-center justify-center font-bold text-sm border border-teal-100">
+                        {user?.userName?.charAt(0).toUpperCase() || 'U'}
+                      </div>
+                    )}
+
                     <span className="hidden sm:inline text-sm font-semibold text-slate-800">
-                      {user.name} {user.role === 'admin' && <span className="text-xs bg-teal-100 text-[#0D9488] px-2 py-0.5 rounded-full ml-1">Admin</span>}
+                      {user?.userName} 
+                      {user?.rol === 'admin' && (
+                        <span className="text-xs bg-teal-100 text-[#0D9488] px-2 py-0.5 rounded-full ml-1">
+                          Admin
+                        </span>
+                      )}
                     </span>
                   </div>
 
                   <button
-                    onClick={() => console.log('Cerrar sesión')}
+                    onClick={handleLogout}
                     className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-rose-600 hover:bg-rose-50 rounded-xl transition-colors cursor-pointer"
                     title="Cerrar sesión"
                   >

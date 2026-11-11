@@ -1,7 +1,6 @@
 import axios from 'axios';
 import type { City } from '../types';
-
-const API_URL = 'http://localhost:4000/api';
+import { API_URL } from '../config/Api';
 
 export const getCities = async (): Promise<City[]> => {
   const response = await axios.get(`${API_URL}/cities`);
