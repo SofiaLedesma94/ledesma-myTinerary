@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight } from 'lucide-react';
 import type { City } from '../../types';
 
 interface CityCardProps {
@@ -15,7 +14,6 @@ export const CityCard: React.FC<CityCardProps> = ({ city }) => {
       to={`/cities/${city._id}`}
       className="group relative block w-full h-full rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl"
     >
-      {/* Imagen de fondo */}
       <img
         src={city.url}
         alt={city.cityName}

@@ -16,17 +16,11 @@ export const Home: React.FC = () => {
   const featuredCities = popularCities.slice(0, 2); // Las primeras 2 más grandes
   const secondaryCities = popularCities.slice(2, 5); // Las otras 3 uniformes
 
-
-
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchCities());
     }
   }, []);
-
-
-  console.log(popularCities)
-
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
